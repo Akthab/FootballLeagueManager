@@ -1,0 +1,55 @@
+<div class="pos-f-t sticky-top">
+  <div class="collapse"
+       id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Sort Options</h4>
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-1"
+              (click)="sortByPoints()">Points
+      </button>
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-1"
+              (click)="sortByWins()">Wins
+      </button>
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-1"
+              (click)="sortByGF()">GF
+      </button>
+    </div>
+
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler"
+            type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>#</th>
+    <th>Club</th>
+    <th>MP</th>
+    <th (click)="sortByWins()">W</th>
+    <th>D</th>
+    <th>L</th>
+    <th (click)="sortByGF()">GF</th>
+    <th>GA</th>
+    <th>GD</th>
+    <th (click)="sortByPoints()">Pts</th>
+  </tr>
+  <tr *ngFor="let club of footBallClubList">
+    <td>{{footBallClubList.indexOf(club) + 1}}</td>
+    <td>{{club.name}}</td>
+    <td>{{club.matchesPlayed}}</td>
+    <th>{{club.wins}}</th>
+    <td>{{club.draws}}</td>
+    <td>{{club.loses}}</td>
+    <th>{{club.goalsScored}}</th>
+    <td>{{club.goalsConceded}}</td>
+    <td>{{club.goalDifference}}</td>
+    <th>{{club.points}}</th>
+  </tr>
+</table>

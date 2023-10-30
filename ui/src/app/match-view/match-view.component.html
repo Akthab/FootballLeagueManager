@@ -1,0 +1,81 @@
+<div class="pos-f-t sticky-top">
+  <div class="collapse"
+       id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Create Random Match</h4>
+      <button class="btn btn-outline-success my-2 my-sm-0"
+              (click)="createRandomMatch()"
+              data-toggle="modal"
+              data-target="#myModal">Create
+      </button>
+    </div>
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Search Match By Date</h4>
+      <form
+        class="form-inline"
+        [formGroup]="searchMatchForm">
+        <input class="form-control mr-sm-2"
+               type="date"
+               aria-label="Search"
+               formControlName="date">
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-1"
+                (click)="searchMatch()"
+                [disabled]="!searchMatchForm.valid">Search
+        </button>
+        <button class="btn btn-outline-success my-2 my-sm-0"
+                (click)="clear()">Clear
+        </button>
+      </form>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler"
+            type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+  <div *ngFor="let match of matchListDisplay" class="p-2 w-25 float-left">
+    <div class="card border shadow">
+      <h3 class="card-header">
+        MatchDay : {{ match.dateTime.day }}/{{ match.dateTime.month }}/{{ match.dateTime.year }}
+      </h3>
+      <div class="card-body">
+        <div class="p-2 w-50 float-left" >{{match.team1Name}}</div>
+        <div class="p-2 w-50 float-left" >- {{match.team1Score}}</div>
+        <br>
+        <div class="p-2 w-50 float-left" >{{match.team2Name}}</div>
+        <div class="p-2 w-50 float-left" >- {{match.team2Score}}</div>
+      </div>
+    </div>
+  </div>
+
+
+<!--Modal-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">{{modalHeading}}</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        {{modalBody}}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
